@@ -7,7 +7,7 @@ var path = require('path');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -18,10 +18,10 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 var path = require('path');
-app.use('/scripts', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'))); 
+app.use('/scripts', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js')));
 app.use('/css', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/css')));
 app.use('/jquery', express.static(path.join(__dirname, 'node_modules/jquery/dist')));
- 
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
@@ -86,6 +86,6 @@ global.classTitles = classTitles;
 global.classDescriptions = classDescriptions;
 global.imageUrls = imageUrls;
 
-http.createServer(app).listen(app.get('port'), function(){   
+http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
